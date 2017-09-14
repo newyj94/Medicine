@@ -4,39 +4,33 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_share"
-            android:icon="@drawable/ic_menu_share"
+            android:icon="@drawable/home"
             android:title="홈(HOME)" />
 
 
         <item
             android:id="@+id/nav_search"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/search"
             android:title="검색(SEARCH)"
 
             />
         <item
             android:id="@+id/nav_alarm"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/alarm"
             android:title="알람(ALARM)"
 
             />
         <item
             android:id="@+id/nav_mypage"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/pill"
             android:title="내 약(MY PAGE)"
 
             />
         <item
             android:id="@+id/nav_near_pharm"
-            android:icon="@drawable/ic_menu_manage"
+            android:icon="@drawable/location"
             android:title="주변 약국(NEAR PHARM)"
 
-            />
-
-        <item
-            android:id="@+id/nav_diagnose"
-            android:icon="@drawable/ic_menu_send"
-            android:title="진단(DIAGNOSE)"
             />
 
     </group>

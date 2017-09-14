@@ -21,6 +21,9 @@ public class NewActivity3_display extends Activity {
 
     private DBHelper dbhp;
     TextView medicine;
+    TextView usage;
+    TextView nickname;
+    Button a;
 
     int id = 0;
 
@@ -28,6 +31,8 @@ public class NewActivity3_display extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new3_display);
        medicine = (TextView)findViewById(R.id.editTextMedicine);
+        usage= (TextView)findViewById(R.id.editTextUsage);
+        nickname = (TextView)findViewById(R.id.editTextNickName);
         dbhp = new DBHelper(this);
 
         Bundle extras = getIntent().getExtras();
@@ -38,12 +43,15 @@ public class NewActivity3_display extends Activity {
                 id = Value;
                 rs.moveToFirst();
                 String m = rs.getString(rs.getColumnIndex(DBHelper.CUSTOMER_COLUMN_MEDICINE));
+//                String n = rs.getString(rs.getColumnIndex(DBHelper.CUSTOMER_COLUMN_NICKNAME));
                 if (!rs.isClosed()) {
                     rs.close();
                 }
                 Button b = (Button)findViewById(R.id.savebtn);
                 b.setVisibility(View.INVISIBLE);
+                Button a = (Button)findViewById(R.id.alarmsavebtn);
                 medicine.setText((CharSequence) m);
+              //  nickname.setText((CharSequence) n);
 
             }
         }
@@ -54,7 +62,7 @@ public class NewActivity3_display extends Activity {
         if (extras != null) {
             int Value = extras.getInt("id");
             if (Value > 0) {
-                if (dbhp.updateCustomer(id, medicine.getText().toString())) {
+                if (dbhp.updateCustomer(id, nickname.getText().toString(), medicine.getText().toString())) {
                     Toast.makeText(getApplicationContext(), "수정되었음", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(getApplicationContext(), NewActivity3main.class);
                     startActivity(intent);
@@ -63,7 +71,7 @@ public class NewActivity3_display extends Activity {
                 }
             }
                 else {
-                    if (dbhp.insertCustomer(medicine.getText().toString())) {
+                    if (dbhp.insertCustomer(nickname.getText().toString(),medicine.getText().toString())) {
                         Toast.makeText(getApplicationContext(), "추가되었음", Toast.LENGTH_SHORT).show();
                     } else {
                         Toast.makeText(getApplicationContext(), "추가되지 않았음", Toast.LENGTH_SHORT).show();
@@ -92,7 +100,7 @@ public class NewActivity3_display extends Activity {
         if (extras != null) {
             int Value = extras.getInt("id");
             if (Value > 0) {
-                if (dbhp.updateCustomer(id, medicine.getText().toString())) {
+                if (dbhp.updateCustomer(id, nickname.getText().toString(), medicine.getText().toString())) {
                     Toast.makeText(getApplicationContext(), "수정되었음", Toast.LENGTH_SHORT).show();
                     finish();
                 } else {

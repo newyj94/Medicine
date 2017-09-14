@@ -33,4 +33,5 @@ dependencies {
     compile 'com.google.android.gms:play-services-places:11.0.4'
     testCompile 'junit:junit:4.12'
     compile files('libs/jsoup-1.10.3.jar')
+    compile 'noman.placesapi:placesAPI:1.1.3'
 }

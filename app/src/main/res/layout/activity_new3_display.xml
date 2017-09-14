@@ -26,7 +26,40 @@
         android:layout_marginLeft="82dp"
         android:layout_alignParentEnd="true">
    <requestFocus />
-</EditText>
+    </EditText>
+
+        <EditText
+            android:id="@+id/editTextNickName"
+            android:layout_width="wrap_content"
+            android:inputType = "text"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:text=""
+            android:layout_marginTop="45dp"
+            android:layout_marginLeft="82dp"
+            android:layout_alignParentEnd="true">
+            <requestFocus />
+        </EditText>
+
+        <EditText
+            android:id="@+id/editTextUsage"
+            android:layout_width="wrap_content"
+            android:inputType = "text"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:text=""
+            android:layout_marginTop="85dp"
+            android:layout_marginLeft="82dp"
+            android:layout_alignParentEnd="true">
+            <requestFocus />
+        </EditText>
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:id="@+id/textView2"
+        android:layout_alignParentLeft="true"
+        android:text="별명"
+        android:layout_alignBottom="@+id/editTextNickName"/>
 <TextView
     android:layout_height="wrap_content"
     android:layout_width="wrap_content"
@@ -34,6 +67,24 @@
     android:layout_alignParentLeft="true"
     android:text="약 이름"
     android:layout_alignBottom="@+id/editTextMedicine"/>
+
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:id="@+id/textView3"
+        android:layout_alignParentLeft="true"
+        android:text="용법"
+        android:layout_alignBottom="@+id/editTextUsage"/>
+
+    <Button
+        android:id="@+id/alarmsavebtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:nestedScrollingEnabled="true"
+        android:onClick="alamrminsert"
+        android:text="알람추가"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:id="@+id/savebtn"

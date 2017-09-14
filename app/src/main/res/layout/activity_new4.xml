@@ -1,15 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:map="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="org.androidtown.hello.NewActivity4"
-    >
+    android:weightSum="1">
+
 
     <fragment
         android:id="@+id/fragment"
         android:name="com.google.android.gms.maps.SupportMapFragment"
-        android:layout_width="310dp"
-        android:layout_height="match_parent"
-        android:layout_weight="0.94" />
+        android:layout_width="match_parent"
+        android:layout_height="472dp"
+        android:layout_weight="0.77" />
+
+    <Button
+        android:text="근처 약국, 내위치 새로고침"
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+
+
 </LinearLayout>

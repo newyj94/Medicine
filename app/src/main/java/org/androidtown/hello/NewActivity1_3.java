@@ -10,162 +10,179 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import static org.jsoup.examples.HtmlToPlainText.main;
 
-public class NewActivity1_3 extends AppCompatActivity implements AdapterView.OnItemSelectedListener,NavigationView.OnNavigationItemSelectedListener {
+
+public final class NewActivity1_3 extends AppCompatActivity {
 
     SpinnerList list;
     TextView textView1;
-
-    // List view
+    Elements link0, link1, link2, link3, link4, link5;
     private ListView lv;
-    // Listview Adapter
     ArrayAdapter<String> adapter;
-    // Search EditText
-    EditText inputSearch;
-    // ArrayList for Listview
-    ArrayList<HashMap<String, String>> productList;
+    EditText input;
+    String keycode = "";
+    TextView textview1;
+    //
+    static String aa0="";
+    static String aa1="";
+    static String aa2="";
+    static String aa3="";
+    static String aa4="";
+    static String k;
     @Override
-
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new1_3);
 
+        String content = "ghghdghhfh";
+        LinearLayout layout = new LinearLayout(this);
+        textview1 = (TextView) findViewById(R.id.text1_view);
 
-
-        String products[] = {"1", "2", "3", "4", "5",
-                "6", "7","8", "9", "10"};
-        lv = (ListView) findViewById(R.id.list_view);
-        // Adding items to listview
-        adapter = new ArrayAdapter<String>(this, R.layout.activity_new1_3_listitem, R.id.product_name, products);
-        lv.setAdapter(adapter);
-
-
-        inputSearch = (EditText) findViewById(R.id.inputSearch);
-        inputSearch.addTextChangedListener(new TextWatcher() {
-            public void onTextChanged(CharSequence cs, int arg1, int arg2, int arg3) {
-                // When user changed the Text
-                NewActivity1_3.this.adapter.getFilter().filter(cs);
+       /* new Thread() {
+            public void run() {
+                try {
+                    main(a);
+                } catch (IOException e) {
+                }
             }
+        }.start();*/
+        // while(cursor.moveToNext()) {
+        //   tv_list.append(content);
+        textview1.setTextSize(20);
+       // textview1.setText(content);
+       // textview1.append(content);
+        Log.w("content뜨나????", String.valueOf(content));
+        //  layout.addView(textview1);
 
-            @Override
-            public void beforeTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {
-                // TODO Auto-generated method stub
+        input = (EditText) findViewById(R.id.inputSearch);
+}
+
+    public void onclick(View v) {
+
+       // Intent intent = new Intent(getApplicationContext(),NewActivity1_3.class);
+      //  startActivity(intent);
+        final String[] b={};
+
+        new Thread() {
+            public void run() {
+        try{main(b);}
+        catch (IOException e){}
             }
+        }.start();
 
-            @Override
-            public void afterTextChanged(Editable editable) {
-                // TODO Auto-generated method stub
-            }
-
-        });
-
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
-        toggle.syncState();
-
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
-
+        input = (EditText) findViewById(R.id.inputSearch);
+        Log.w("인풋의값은????", String.valueOf(input.getText().toString()));
+        String key = input.getText().toString();
+        keycode = key;
+        Log.w("이거제ㅂㄹ제발", String.valueOf(k));
+        Log.w("이거제발??", String.valueOf(aa0));
+        textview1.setText(aa0);
+        textview1.append("\n");
+        textview1.append(aa1);
+        textview1.append("\n");
+        textview1.append(aa2);
+        textview1.append("\n");
+        textview1.append(aa3);
+        textview1.append("\n");
+        textview1.append(aa4);
 
     }
 
-    public void onItemSelected(AdapterView<?> parent, View v, int position, long id) {
-        String medItem = list.getitems(position);
-        textView1.setText(medItem);
-    }
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
-        textView1.setText("선택해주세요");
-    }
-    public void onButton1_3searchClicked(View v) {
-        Intent intent = new Intent(getApplicationContext(),NewActivity1_3.class);
-        startActivity(intent);
-    }
+    public void main(String[] a) throws IOException {
+        String item_name = "아스피린";
+        String name1 = "성공";
+        String name2 = "실패";
+        Log.w("keycode의값은????", String.valueOf(keycode));
 
-    @Override
-    public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
+        StringBuilder urlBuilder = new StringBuilder("http://apis.data.go.kr/1470000/MdcinGrnIdntfcInfoService/getMdcinGrnIdntfcInfoList");
+
+
+        urlBuilder.append("?" + URLEncoder.encode("ServiceKey", "UTF-8") + "=XtA4Wl%2FHnYeTUg902C0cFjbJBbE8W6s%2BnTzWX4J5ylYxDWLWmsTvfVss%2FQggtnMh2dfnP8Lmbc%2FN7RTj4mMRUQ%3D%3D"); //Service Key
+        urlBuilder.append("&" + URLEncoder.encode("item_name", "UTF-8") + "=" + URLEncoder.encode(keycode, "UTF-8")); //품목명
+        urlBuilder.append("&" + URLEncoder.encode("entp_name", "UTF-8") + "=" + URLEncoder.encode("", "UTF-8")); //업체명
+        //urlBuilder.append("&" + URLEncoder.encode("DRUG_SHAPE", "UTF-8") + "=" + URLEncoder.encode("원형", "UTF-8")); //품목명
+        urlBuilder.append("&" + URLEncoder.encode("pageNo", "UTF-8") + "=" + URLEncoder.encode("1", "UTF-8")); //페이지번호
+        urlBuilder.append("&" + URLEncoder.encode("numOfRows", "UTF-8") + "=" + URLEncoder.encode("3", "UTF-8")); //한 페이지 결과 수
+        URL url = new URL(urlBuilder.toString());
+        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+        conn.setRequestMethod("GET");
+        conn.setRequestProperty("Content-type", "application/json");
+        System.out.println("Response code: " + conn.getResponseCode());
+        BufferedReader rd;
+
+        if (conn.getResponseCode() >= 200 && conn.getResponseCode() <= 300) {
+            rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
         } else {
-            super.onBackPressed();
-        }
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+            rd = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
         }
 
-        return super.onOptionsItemSelected(item);
-    }
+        StringBuilder sb = new StringBuilder();
+        String line;
 
-    @SuppressWarnings("StatementWithEmptyBody")
-    @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
-
-        int id = item.getItemId();
-
-        if (id == R.id.nav_share) {
-            Intent intent = new Intent(getApplicationContext(),MainActivity.class);
-            startActivity(intent);
-        }  else if (id == R.id.nav_search) {
-            Intent intent = new Intent(getApplicationContext(),NewActivity.class);
-            startActivity(intent);
-
-        } else if (id == R.id.nav_alarm) {
-            Intent intent1 = new Intent(getApplicationContext(),NewActivity2.class);
-            startActivity(intent1);
-        } else if (id == R.id.nav_mypage) {
-            Intent intent2 = new Intent(getApplicationContext(),NewActivity3main.class);
-            startActivity(intent2);
-        } else if (id == R.id.nav_near_pharm) {
-            Intent intent3 = new Intent(getApplicationContext(),NewActivity4.class);
-            startActivity(intent3);
-        } else if (id == R.id.nav_diagnose) {
-            Intent intent4 = new Intent(getApplicationContext(),NewActivity5.class);
-            startActivity(intent4);
+        while ((line = rd.readLine()) != null) {
+            Log.w("line값은???", String.valueOf(line));
+            sb.append(line);
         }
 
+        Document doc = Jsoup.connect(urlBuilder.toString()).get();
+        String title = doc.title();
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawers();
+        Elements link0 = doc.select("ITEM_NAME");
+        String virtuallink0 = new String(String.valueOf(link0));
+        String actuallink0[]  = virtuallink0.split("\n");
+        Elements link1 = doc.select("CHART");
+        String virtuallink1 = new String(String.valueOf(link1));
+        String actuallink1[]  = virtuallink1.split("\n");
+        Elements link2 = doc.select("CLASS_NAME");
+        String virtuallink2 = new String(String.valueOf(link2));
+        String actuallink2[]  = virtuallink2.split("\n");
+        Elements link3 = doc.select("ETC_OTC_NAME");
+        String virtuallink3 = new String(String.valueOf(link3));
+        String actuallink3[]  = virtuallink3.split("\n");
+        Elements link4 = doc.select("FORM_CODE_NAME");
+        String virtuallink4 = new String(String.valueOf(link4));
+        String actuallink4[]  = virtuallink4.split("\n");
 
-        return true;
+        aa0 = actuallink0[1];
+        aa1 = actuallink1[1];
+        aa2 = actuallink2[1];
+        aa3 = actuallink3[1];
+        aa4 = actuallink4[1];
 
+        Log.w("hh링크item_name값은???", String.valueOf(actuallink0[1]));
+        Log.w("hh링크chart값은???", String.valueOf(actuallink1[1]));
+        Log.w("hh링크class_name값은???", String.valueOf(actuallink2[1]));
+        Log.w("//링크etc_otc_name값은???", String.valueOf(actuallink3[1]));
+        Log.w("//링크form_code_name값은???", String.valueOf(actuallink4[1]));
+
+        rd.close();
+        conn.disconnect();
     }
 }

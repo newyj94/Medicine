@@ -27,6 +27,7 @@ import java.util.List;
 public class NewActivity3main extends AppCompatActivity implements View.OnClickListener {
 
     TextView medicine;
+    TextView nickname;
 
     int id = 0;
     ListView myListView;
@@ -36,7 +37,8 @@ public class NewActivity3main extends AppCompatActivity implements View.OnClickL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new3_main);
-        dbhp = new DBHelper(this);
+
+       dbhp = new DBHelper(this);
         ArrayList array_list = dbhp.getAllmedicine();
 
         mAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, array_list);
@@ -66,9 +68,14 @@ public class NewActivity3main extends AppCompatActivity implements View.OnClickL
                dataBundle.putInt("id", id);
                Intent intent = new Intent(getApplicationContext(), NewActivity3_display.class);
                intent.putExtras(dataBundle);
+
                startActivity(intent);
+
            }
-       });
+
+       }
+       );
+
     }
 
 
@@ -76,9 +83,9 @@ public class NewActivity3main extends AppCompatActivity implements View.OnClickL
 
     protected void onResume() {
         super.onResume();
-        mAdapter.clear();
-        mAdapter.addAll(dbhp.getAllmedicine());
-        mAdapter.notifyDataSetChanged();
+      //  mAdapter.clear();
+       // mAdapter.addAll(dbhp.getAllmedicine());
+       // mAdapter.notifyDataSetChanged();
     }
 
     @Override

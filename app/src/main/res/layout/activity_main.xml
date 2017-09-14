@@ -51,15 +51,6 @@
             android:onClick="onButton4Clicked"
             android:text="주변 약국" />
 
-        <Button
-            android:id="@+id/button5"
-            android:layout_width="200dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:layout_margin="10dp"
-            android:onClick="onButton5Clicked"
-            android:text="진단" />
-
 
     </LinearLayout>
 
@@ -74,7 +65,6 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
-        app:headerLayout="@layout/nav_header_main"
         app:menu="@menu/activity_main_drawer" />
 
 
